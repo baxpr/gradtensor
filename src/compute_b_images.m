@@ -136,4 +136,4 @@ for b = 1:nb
 	system(['gzip -f ' Vout.fname]);
 end
 
-system(['gzip -f ' rlimg_file]);
+system(['gzip -f ' rLimg_file]);

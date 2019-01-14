@@ -6,6 +6,8 @@
 # Need to -a include some local subdirectories, e.g. src/sh_basis
 # Grant lenient execute permissions to the matlab executable and runscript
 
+export PATH=/usr/local/MATLAB/R2017a/bin:${PATH}
+
 # Module to compute gradient coil tensor image
 mcc -m -v src/fieldmaps_to_gradtensor.m \
     -a src/sh_basis \
