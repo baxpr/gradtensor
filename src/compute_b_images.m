@@ -1,4 +1,4 @@
-function [adjbvec_files,adjbval_files] = compute_b_images( ...
+function [adjbvec_files,adjbval_files,rLimg_file] = compute_b_images( ...
 	Limg_file, ...
 	refimg_file, ...
 	bval_file, ...
@@ -38,6 +38,8 @@ flags = struct( ...
 spm_reslice({refimg_file; Limg_file},flags);
 [~,n,e] = fileparts(Limg_file);
 rLimg_file = fullfile(out_dir,['r' n e]);
+movefile(rLimg_file,fullfile(out_dir,'L_resamp.nii'));
+rLimg_file = fullfile(out_dir,'L_resamp.nii');
 
 % Load the grad tensor and reshape. Initial dimensions are x,y,z,e where e
 % is Lxx, Lxy, Lxz, Lyx, Lyy, etc. We need to reshape to i,j,v where Lij is
@@ -116,9 +118,10 @@ for b = 1:nb
 	for n = 1:3
 		Vout.n(1) = n;
 		spm_write_vol(Vout,reshape(adjbvec(:,n,b),Vout.dim));
-		system(['gzip -f ' Vout.fname]);
 	end
 	
+	system(['gzip -f ' Vout.fname]);
+
 end
 
 % Save bval image to file
@@ -133,3 +136,4 @@ for b = 1:nb
 	system(['gzip -f ' Vout.fname]);
 end
 
+system(['gzip -f ' rlimg_file]);
