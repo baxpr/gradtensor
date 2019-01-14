@@ -36,8 +36,8 @@ flags = struct( ...
 	'prefix','r' ...
 	);
 spm_reslice({refimg_file; Limg_file},flags);
-[~,n,e] = fileparts(Limg_file);
-rLimg_file = fullfile(out_dir,['r' n e]);
+[p,n,e] = fileparts(Limg_file);
+rLimg_file = fullfile(p,['r' n e]);
 movefile(rLimg_file,fullfile(out_dir,'L_resamp.nii'));
 rLimg_file = fullfile(out_dir,'L_resamp.nii');
 
