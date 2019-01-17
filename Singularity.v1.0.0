@@ -4,14 +4,16 @@ From: ubuntu:16.04
 %help
 gradtensor
 
+https://github.com/baxpr/gradtensor/
 Gradient coil tensor: estimation from field maps, and correction of b-values
 
-TO BUILD
-  sudo singularity build gradtensor_v1.0.0.simg Singularity.v1.0.0 
+See information in the container's files 
+  /opt/gradtensor/README.md
+  /opt/gradtensor/usage-singularity.txt
 
-TO RUN
-See the associated YAML files for info about inputs and running the container
-
+%setup
+  mkdir -p ${SINGULARITY_ROOTFS}/opt/gradtensor
+  
 %files
   bin /opt/gradtensor
   src /opt/gradtensor
