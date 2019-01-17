@@ -5,7 +5,7 @@ Usage:
 Create gradient coil tensor image from field map set. All options starting
 with fieldmap_hz_0_file have the specified defaults and can be omitted:
 
-singularity run \
+singularity exec \
 --cleanenv \
 --home <input_dir> \
 --bind <input_dir>:/INPUTS \
@@ -30,7 +30,7 @@ Given a gradient coil tensor image, compute adjusted b-values and vectors
 for a specific set of diffusion-weighted images. The options from Limg_file on
 are optional and have the specified defaults:
 
-singularity run \
+singularity exec \
 --cleanenv \
 --home <input_dir> \
 --bind <input_dir>:/INPUTS \
